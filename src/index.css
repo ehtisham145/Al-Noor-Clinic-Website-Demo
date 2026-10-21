@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-paper font-body text-[17px] leading-relaxed text-muted antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-heading font-semibold tracking-tight text-ink;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-paper;
+  }
+  [tabindex='-1']:focus {
+    @apply outline-none ring-0;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply h-px w-8 bg-accent;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 text-[15px] font-semibold transition duration-300 ease-in-out hover:-translate-y-0.5;
+  }
+  .btn-primary {
+    @apply btn bg-primary text-white hover:bg-primary-dark hover:shadow-card;
+  }
+  .btn-accent {
+    @apply btn bg-accent text-white hover:bg-accent-dark hover:shadow-card;
+  }
+  .btn-outline {
+    @apply btn border border-ink/20 text-ink hover:border-primary-dark hover:bg-primary-dark hover:text-white;
+  }
+  .btn-whatsapp {
+    @apply btn bg-whatsapp text-ink hover:bg-whatsapp-dark hover:shadow-card;
+  }
+  .link-arrow {
+    @apply inline-flex items-center gap-1.5 font-semibold text-primary underline-offset-4 transition-colors duration-300 hover:text-primary-dark hover:underline;
+  }
+  .input {
+    @apply w-full rounded-md border border-line bg-white px-4 py-3 text-ink transition duration-300 placeholder:text-muted/60 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20;
+  }
+  .card {
+    @apply rounded-lg border border-line bg-white;
+  }
+  /* Long-form text: blog posts and legal pages */
+  .prose-body > * + * {
+    @apply mt-5;
+  }
+  .prose-body h2 {
+    @apply mt-10 text-2xl;
+  }
+  .prose-body ul {
+    @apply list-disc space-y-2 pl-6 marker:text-accent;
+  }
+  .prose-body a {
+    @apply text-primary underline underline-offset-4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
